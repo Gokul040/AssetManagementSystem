@@ -1,0 +1,61 @@
+
+<h1 mat-dialog-title align="middle"> User Details </h1>
+<div mat-dialog-content>
+  <form [formGroup]="userForm">
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter First Name</mat-label>
+      <input formControlName="firstname" matInput placeholder="First Name"  matInput formControlName="firstname">
+      <mat-icon matSuffix> person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Last Name</mat-label>
+      <input formControlName="lastname" matInput placeholder="Last Name"  matInput formControlName="lastname">
+      <mat-icon matSuffix> person</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Contact No</mat-label>
+      <input formControlName="contactno" placeholder="Contact No"  matInput formControlName="contactno">
+      <mat-icon matSuffix> phone</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label> Role</mat-label>
+      <mat-select placeholder="role" matInput formControlName="role">
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="Creator">Creator</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter Email id</mat-label>
+      <input placeholder="Asset Id" matInput formControlName="emailid" >
+      <mat-icon matSuffix> email</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Enter password</mat-label>
+      <input formControlName="password" matinput placeholder="password" type="password" matInput formControlName="password" [type]="hide ? 'password' : 'text'">
+      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <section class="example-section" *ngIf="isStatus">
+      <label class="example-margin">Account Status:</label>
+      <mat-radio-group   formControlName="status">
+        <mat-radio-button class="example-margin" value="Active">Active</mat-radio-button>
+        <mat-radio-button class="example-margin" value="Non-Active">Non-Active</mat-radio-button>
+      </mat-radio-group>
+    </section>
+ 
+
+  </form>
+</div>
+<div mat-dialog-actions align="end">
+  <button style=" margin-left: 8px;" type="submit" mat-raised-button color="primary" (click)="updateUser()" (click)="addUser()">{{actionBtn}}</button>
+  <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+</div>
+ 
